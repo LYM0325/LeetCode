@@ -1,0 +1,24 @@
+#include<stdio.h>
+int isPalindrome(int x) {
+	int result = 0;
+	int num = x;
+	if(x<0) {
+		return 1;
+	} else {
+		while(x) {
+			int tmp = x%10;
+			x = x/10;
+			result = result*10+tmp;
+		}
+		if(result == num) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+}
+
+int  main() {
+	printf("%d ",isPalindrome(-101));
+	return 0;
+}
