@@ -1,0 +1,73 @@
+#include<stdio.h>
+int romanToInt(char *s) {
+	int i;
+	int sum = 0;
+	int temp = 0;
+	enum Roman { I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000 };
+	for(i = 0; *(s+i); i++) {
+		switch (*(s+i)) {
+			case'I':
+				sum += I;
+				temp = I;
+				break;
+
+			case'V':
+				if (temp == I)
+					sum += V - 2;
+				else
+					sum += V;
+				break;
+
+			case'X':
+				if (temp == I)
+					sum += X - 2;
+				else
+					sum += X;
+				temp = X;
+				break;
+
+			case'L':
+				if (temp == X)
+					sum += L - 20;
+				else
+					sum += L;
+				break;
+
+			case'C':
+				if (temp == X)
+					sum += C - 20;
+				else
+					sum += C;
+				temp = C;
+				break;
+
+			case'D':
+				if (temp == C)
+					sum += D - 200;
+				else
+					sum += D;
+				break;
+
+			case'M':
+				if (temp == C)
+					sum += M - 200;
+				else
+					sum += M;
+				break;
+		}
+	}
+
+	return sum;
+}
+int main() {
+	char s[10];	
+	char c;
+	do
+	{
+	gets(s);
+	printf("%d \n",romanToInt(s));
+	printf("按回车表示继续，ctrl+z结束");
+	}while(scanf("%c",&c) != EOF);
+	
+	return 0;
+}
