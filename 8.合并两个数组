@@ -2,18 +2,18 @@
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
     int i = 0, j = 0;
     int sorted[m + n];
-    int cur;
+    int tmp;
     while (i < m || j < n) {
         if (i == m) {
-            cur = nums2[j++];
+            tmp = nums2[j++];
         } else if (j == n) {
-            cur = nums1[i++];
+            tmp = nums1[i++];
         } else if (nums1[i] < nums2[j]) {
-            cur = nums1[i++];
+            tmp = nums1[i++];
         } else {
-            cur = nums2[j++];
+            tmp = nums2[j++];
         }
-        sorted[i + j - 1] = cur;
+        sorted[i + j - 1] = tmp;
     }
     for (int i = 0; i != m + n; ++i) {
         nums1[i] = sorted[i];
@@ -26,7 +26,7 @@ int cmp(int* a, int* b) {
 }
 
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
-    for (int i = 0; i != n; ++i) {
+    for (int i = 0; i < n; i++) {
         nums1[m + i] = nums2[i];
     }
     qsort(nums1, nums1Size, sizeof(int), cmp);
