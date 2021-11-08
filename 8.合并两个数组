@@ -1,0 +1,20 @@
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
+    int i = 0, j = 0;
+    int sorted[m + n];
+    int cur;
+    while (i < m || j < n) {
+        if (i == m) {
+            cur = nums2[j++];
+        } else if (j == n) {
+            cur = nums1[i++];
+        } else if (nums1[i] < nums2[j]) {
+            cur = nums1[i++];
+        } else {
+            cur = nums2[j++];
+        }
+        sorted[i + j - 1] = cur;
+    }
+    for (int i = 0; i != m + n; ++i) {
+        nums1[i] = sorted[i];
+    }
+}
