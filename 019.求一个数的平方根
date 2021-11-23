@@ -13,3 +13,12 @@ int mySqrt(int x){
    }
     return 0;
 }
+/////////////////////////////////////////////////////
+int mySqrt(int x){
+    long int a;
+    for(a= 1;a*a<=x;a++)
+    {
+        continue;
+    }
+    return a-1;
+}
