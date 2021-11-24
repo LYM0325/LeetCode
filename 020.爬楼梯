@@ -1,0 +1,16 @@
+int climbStairs(int n){
+    int a = 0,b = 0;
+    int i;
+    int num = 1;
+    if(n<=1)
+    {
+        return 1;
+    }
+    for(i = 1;i<=n;i++)
+    {
+        a = b;
+        b = num;
+        num = a + b;
+    }
+    return num;
+}
